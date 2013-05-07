@@ -1,0 +1,9 @@
+#dbox {
+
+}
+
+.clear {
+   opacity: 0.20 !important;
+   filter: alpha(opacity=20) !important;
+
+}

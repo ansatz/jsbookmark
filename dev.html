@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<title>Remote: Page Link bookmarklets</title>
+		<base target="receiver">
+		<style type="text/css">
+				 body { background-color:  #ffddbb ;  color: black; }
+			  	a.bml { color : #007700; }
+		  </style>
+			  <script type="text/javascript">
+				  function time(){
+					  var start= (new Date);
+					  var day = start.getDay();
+					  var mm = start.getMonth();
+					  var yr = start.getYear()+1900;
+					  	var h = start.getHours();
+						var m = start.getMinutes();
+						var hm = (mm + ' \/ ' + day + ' \/ ' + yr + ' \t     ' + h + ' : ' + m);
+					  return hm;
+				  };
+				  
+					quotes = new Array( );
+				  	quotes[quotes.length] = {quote:"One should eat to live, and not live to eat.",
+				  author:"Moliere"};
+				  quotes[quotes.length] = {quote:"For man is man and master of his fate.",
+				  author:"Tennyson"};
+				  quotes[quotes.length] = {quote:"History is more or less bunk.",
+				  author:"Henry Ford"};
+				  quotes[quotes.length] = {quote:"You should never have your best trousers on when you
+				  turn out to fight for freedom and truth.",
+				  author:"Ibsen"};
+				  quotes[quotes.length] = {quote:"It is vain and foolish to talk of knowing Greek.",
+				  author:"Woolf"};
+				function insertSaying() {
+					var currIndex = Math.floor(Math.random( ) * (quotes.length));
+					var qt = quotes[currIndex].quote + ' ' + quotes[currIndex].quote;
+				}
+				//TODO: add selectText to url 
+				function goURL(group){
+					var data = document.forms[0].selectText.value;
+					location.href = group + "?" + encodeURIComponent(data);
+
+				//}
+			  </script>
+	  </head>
+
+	  <body>
+
+		  <p><b>
+			<script type="text/javascript">
+				if(Math.floor(math.random( )>.5){ 
+					document.write(time())	
+				}
+				else
+					document.write(insertSaying())
+			</script></b</p>
+	
+		  <p><b><a href="http://localhost:8888/dev2.html">LIST</a></b></p>
+		  <p>
+		  
+		  <a class="bml" 
+			  href="javascript:(function(){url = encodeURI(window.location.href);alert(url);})()">location</a>
+ 		  
+		  <p>
+			<a class="bml" href="dev2.html" onclick="goURL('dev2.html'); return false;">list</a>
+		  </p>
+  
+  
+  <!-- <a class onclick="setTimeout('window.close()',0)"  
+		  <a class="bml"
+			  href="javascript:(function(){var x,n,nD,z,i; function aab(a,b){return a?a:b;} function htmlEscape(s){s=s.replace(/&amp;/g,'&amp;amp;');s=s.replace(/&gt;/g,'&amp;gt;');s=s.replace(/&lt;/g,'&amp;lt;');return s;} function attrQuoteEscape(s){s=s.replace(/&amp;/g,'&amp;amp;'); s=s.replace(/&quot;/g, '&amp;quot;');return s;} x=prompt(&quot;show links with this word/phrase in link text or target url (leave blank to list all links):&quot;, &quot;&quot;); n=0; if(x!=null) { x=x.toLowerCase(); nD = window.open().document; nD.writeln('<html><head><title>Links containing &quot;'+htmlEscape(x)+'&quot;</title><base target=&quot;_blank&quot;></head><body>'); nD.writeln('Links on <a href=&quot;'+attrQuoteEscape(location.href)+'&quot;>'+htmlEscape(location.href)+'</a><br> with link text or target url containing &amp;quot;' + htmlEscape(x) + '&amp;quot;<br><hr>'); z = document.links; for (i = 0; i < z.length; ++i) { if ((z[i].innerHTML && z[i].innerHTML.toLowerCase().indexOf(x) != -1) || z[i].href.toLowerCase().indexOf(x) != -1 ) { nD.writeln(++n + '. <a href=&quot;' + attrQuoteEscape(z[i].href) + '&quot;>' + aab(z[i].innerHTML, htmlEscape(z[i].href)) + '</a><br>'); } } nD.writeln('<hr></body></html>'); nD.close(); } })();"
+			  >search links</a>
+
+		  <br>
+
+		  <a class="bml"
+			  href="javascript:(function(){var n_to_open,dl,dll,i; function linkIsSafe(u) { if (u.substr(0,7)=='mailto:') return false; if (u.substr(0,11)=='javascript:') return false; return true; } n_to_open = 0; dl = document.links; dll = dl.length; for(i = 0; i < dll; ++i) { if (linkIsSafe(dl[i].href)) ++n_to_open; } if (!n_to_open) alert ('no links'); else { if (confirm('Open ' + n_to_open + ' links in new windows?')) for (i = 0; i < dll; ++i) if (linkIsSafe(dl[i].href)) window.open(dl[i].href); } })();"
+			  >open all links</a>
+		  <br>
+
+
+		  <a class="bml"
+			  href="javascript:(function(){var n_to_open,dl,dll,i; function linkIsSafe(u) { if (u.substr(0,7)=='mailto:') return false; if (u.substr(0,11)=='javascript:') return false; return true; } n_to_open = 0; dl = document.links; dll = dl.length; if (window.getSelection && window.getSelection().containsNode) { /* mozilla */ for(i=0; i<dll; ++i) { if (window.getSelection().containsNode(dl[i], true) && linkIsSafe(dl[i].href)) ++n_to_open; } if (n_to_open && confirm('Open ' + n_to_open + ' selected links in new windows?')) { for(i=0; i<dll; ++i) if (window.getSelection().containsNode(dl[i], true)) window.open(dl[i].href); } } /* /mozilla */ if (!n_to_open) { /*ie, or mozilla with no links selected: this section matches open_all_links, except for the alert text */ for(i = 0; i < dll; ++i) { if (linkIsSafe(dl[i].href)) ++n_to_open; } if (!n_to_open) alert ('no links'); else { if (confirm('No links selected.  Open ' + n_to_open + ' links in new windows?')) for (i = 0; i < dll; ++i) if (linkIsSafe(dl[i].href)) window.open(dl[i].href); } } })();"
+			  >open selected links</a>
+		  <br>
+
+
+		  <a class="bml"
+			  href="javascript:(function(){var x,z,i; function linkIsSafe(u) { if (u.substr(0,7)=='mailto:') return false; if (u.substr(0,11)=='javascript:') return false; return true; } function linkIsImage(u) { var spd, ext; spd=u.split('.'); if (spd.length > 0) { ext = spd[spd.length-1].toLowerCase(); if (ext=='gif' || ext=='jpg' || ext=='jpeg' || ext=='png' || ext=='mng') return true; } return false; } function htmlEscape(s){s=s.replace(/&amp;/g,'&amp;amp;');s=s.replace(/&gt;/g,'&amp;gt;');s=s.replace(/&lt;/g,'&amp;lt;');return s;} z = window.open().document; z.writeln('<p>Images linked to by ' + htmlEscape(location.href) + ':</p><hr>'); x = document.links; for (i = 0; i < x.length; ++i) if(linkIsSafe(x[i].href) && linkIsImage(x[i].href)) z.writeln('<p>' + x[i].innerHTML + ' (' + htmlEscape(x[i].href) + ')<br><img src=&quot;' + x[i].href.replace(/&quot;/g, '&amp;quot;') + '&quot;></p>'); z.writeln('<hr>'); z.close(); })();"
+			  >linked images</a>
+		  <br>
+
+
+		  <a class="bml"
+			  href="javascript:(function(){var dims,dimarray,wid,hei,dimstring,x,i,z,url; function linkIsSafe(u) { if (u.substr(0,7)=='mailto:') return false; if (u.substr(0,11)=='javascript:') return false; return true; } function htmlEscape(s){s=s.replace(/&amp;/g,'&amp;amp;');s=s.replace(/&gt;/g,'&amp;gt;');s=s.replace(/&lt;/g,'&amp;lt;');return s;} dims = prompt('width, height for each frame', '760, 500'); if (dims!=null) { dimarray = dims.split(','); wid = parseInt(dimarray[0]); hei = parseInt(dimarray[1]); dimstring = 'width='+wid+' height='+hei; x = document.links; z = window.open().document; for (i = 0; i < x.length; ++i) { url = x[i].href; if(linkIsSafe(url)) { z.writeln('<p>' + x[i].innerHTML + ' (' + htmlEscape(url) + ')<br><iframe ' + dimstring + ' src=&quot;' + url.replace(/&quot;/g, '&amp;quot;') + '&quot;>[broken iframe]</iframe></p>'); } } z.close(); } })();"
+			  >linked pages</a>
+		  <br>
+
+
+		  <a class="bml"
+			  href="javascript:(function(){var f,x,i; f=prompt('Target links to:\n\n_blank: new windows\n_self: this window\nfoo: a single new window called &quot;foo&quot;','_blank'); if(f!=null) { x=document.links; for(i=0;i<x.length;++i) { x[i].target=f; } } })();"
+			  >retarget links</a>
+		  <br>
+
+
+		  <a class="bml"
+			  href='javascript:(function(){var x,i; x = document.forms; for (i = 0; i < x.length; ++i) x[i].method="get"; alert("Changed " + x.length + " forms to use the GET method.  After submitting a form from this page, you should be able to bookmark the result."); })();'>frmget</a>  
+		  
+		  -->
+
+	  </body>
+  </html>

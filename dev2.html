@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<script type="text/javascript>
+			function readData(){
+				var urlStr = decodeURIComponent(location.search.substring(1, location.search.length));
+				if(urlStr > 0) {
+				document.forms[0].url.value=location.href
+				document.forms[1].selectText.value=location.href
+			}
+		}	
+
+		</script>
+	</head>
+	<body onload="readData()"></body>
+</html>
