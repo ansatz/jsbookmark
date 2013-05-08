@@ -19,22 +19,6 @@
 					  return hm;
 				  };
 				  
-					quotes = new Array( );
-				  	quotes[quotes.length] = {quote:"One should eat to live, and not live to eat.",
-				  author:"Moliere"};
-				  quotes[quotes.length] = {quote:"For man is man and master of his fate.",
-				  author:"Tennyson"};
-				  quotes[quotes.length] = {quote:"History is more or less bunk.",
-				  author:"Henry Ford"};
-				  quotes[quotes.length] = {quote:"You should never have your best trousers on when you
-				  turn out to fight for freedom and truth.",
-				  author:"Ibsen"};
-				  quotes[quotes.length] = {quote:"It is vain and foolish to talk of knowing Greek.",
-				  author:"Woolf"};
-				function insertSaying() {
-					var currIndex = Math.floor(Math.random( ) * (quotes.length));
-					var qt = quotes[currIndex].quote + ' ' + quotes[currIndex].quote;
-				}
 				//TODO: add selectText to url
 				//TODO: add to category
 				function writeURL(){
@@ -56,9 +40,8 @@
 				if(Math.floor(math.random( )>0){ 
 					document.write(time())	
 				}
-				//else
-				//	document.write(insertSaying())
-		</script></b></p>
+			</script>
+		  </b></p>
 	
 		<p>
 			<b><a href="http://localhost:8888/dev2.html">LIST</a></b>
@@ -68,14 +51,10 @@
 		  	<a class="bml" href="javascript:(function(){url = encodeURI(window.location.href);alert(url);})()">location</a>>
 		</p>
 
-		<p>
-			<a class="bml" href="localhost:8888/dev2.html" onclick="writeURL(); return false;">list</a>
-			</p>
-
 		
 		<p id='url-ctg'>
 			<script type="text/javascript">
-				alert('onload);
+				alert('onload');
 				addOnLoadEvent(function() {insertSaying('url-ctg')};
 			</script>
 		</div>
