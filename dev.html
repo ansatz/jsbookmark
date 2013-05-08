@@ -4,7 +4,8 @@
 		<base target="receiver">
 		<style type="text/css">
 				 body { background-color:  #ffddbb ;  color: black; }
-			  	a.bml { color : #007700; }
+				 a.bml { color : #007700; }
+				 .ctg{ color : #000010; }
 		  </style>
 			  <script type="text/javascript">
 				  function time(){
@@ -34,12 +35,17 @@
 					var currIndex = Math.floor(Math.random( ) * (quotes.length));
 					var qt = quotes[currIndex].quote + ' ' + quotes[currIndex].quote;
 				}
-				//TODO: add selectText to url 
-				function goURL(group){
-					var data = document.forms[0].selectText.value;
-					location.href = group + "?" + encodeURIComponent(data);
-
-				//}
+				//TODO: add selectText to url
+				//TODO: add to category
+				function writeURL(){
+					//var selectText="abcdefgh";
+					//var data = document.forms[0].selectText.value;
+					var elm = document.createElement("p")
+					elm.className="ctg";	
+					elm.appendChild(document.createTextNode(window.location.href));
+					document.getElementByID('url-ctg').appendChild(pElem);
+				}
+					//location.href = group + "?" + encodeURIComponent(data);
 			  </script>
 	  </head>
 
@@ -47,24 +53,51 @@
 
 		  <p><b>
 			<script type="text/javascript">
-				if(Math.floor(math.random( )>.5){ 
+				if(Math.floor(math.random( )>0){ 
 					document.write(time())	
 				}
-				else
-					document.write(insertSaying())
-			</script></b</p>
+				//else
+				//	document.write(insertSaying())
+		</script></b></p>
 	
-		  <p><b><a href="http://localhost:8888/dev2.html">LIST</a></b></p>
-		  <p>
+		<p>
+			<b><a href="http://localhost:8888/dev2.html">LIST</a></b>
+		</p>
 		  
-		  <a class="bml" 
-			  href="javascript:(function(){url = encodeURI(window.location.href);alert(url);})()">location</a>
- 		  
-		  <p>
-			<a class="bml" href="dev2.html" onclick="goURL('dev2.html'); return false;">list</a>
-		  </p>
-  
-  
+		<p>
+		  	<a class="bml" href="javascript:(function(){url = encodeURI(window.location.href);alert(url);})()">location</a>>
+		</p>
+
+		<p>
+			<a class="bml" href="localhost:8888/dev2.html" onclick="writeURL(); return false;">list</a>
+			</p>
+
+		
+		<p id='url-ctg'>
+			<script type="text/javascript">
+				alert('onload);
+				addOnLoadEvent(function() {insertSaying('url-ctg')};
+			</script>
+		</div>
+		</p>
+
+
+	  </body>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- <a class onclick="setTimeout('window.close()',0)"  
 		  <a class="bml"
 			  href="javascript:(function(){var x,n,nD,z,i; function aab(a,b){return a?a:b;} function htmlEscape(s){s=s.replace(/&amp;/g,'&amp;amp;');s=s.replace(/&gt;/g,'&amp;gt;');s=s.replace(/&lt;/g,'&amp;lt;');return s;} function attrQuoteEscape(s){s=s.replace(/&amp;/g,'&amp;amp;'); s=s.replace(/&quot;/g, '&amp;quot;');return s;} x=prompt(&quot;show links with this word/phrase in link text or target url (leave blank to list all links):&quot;, &quot;&quot;); n=0; if(x!=null) { x=x.toLowerCase(); nD = window.open().document; nD.writeln('<html><head><title>Links containing &quot;'+htmlEscape(x)+'&quot;</title><base target=&quot;_blank&quot;></head><body>'); nD.writeln('Links on <a href=&quot;'+attrQuoteEscape(location.href)+'&quot;>'+htmlEscape(location.href)+'</a><br> with link text or target url containing &amp;quot;' + htmlEscape(x) + '&amp;quot;<br><hr>'); z = document.links; for (i = 0; i < z.length; ++i) { if ((z[i].innerHTML && z[i].innerHTML.toLowerCase().indexOf(x) != -1) || z[i].href.toLowerCase().indexOf(x) != -1 ) { nD.writeln(++n + '. <a href=&quot;' + attrQuoteEscape(z[i].href) + '&quot;>' + aab(z[i].innerHTML, htmlEscape(z[i].href)) + '</a><br>'); } } nD.writeln('<hr></body></html>'); nD.close(); } })();"
@@ -105,7 +138,5 @@
 		  <a class="bml"
 			  href='javascript:(function(){var x,i; x = document.forms; for (i = 0; i < x.length; ++i) x[i].method="get"; alert("Changed " + x.length + " forms to use the GET method.  After submitting a form from this page, you should be able to bookmark the result."); })();'>frmget</a>  
 		  
-		  -->
 
-	  </body>
-  </html>
+  -->
