@@ -30,6 +30,13 @@
 					document.getElementByID('url-ctg').appendChild(pElem);
 				}
 					//location.href = group + "?" + encodeURIComponent(data);
+			function goNext(url) {
+				var loc = window.location.href;
+				location.href = url + "?" + encodeURIComponent(loc);
+			}
+
+
+
 			  </script>
 	  </head>
 
@@ -50,17 +57,11 @@
 		<p>
 		  	<a class="bml" href="javascript:(function(){url = encodeURI(window.location.href);alert(url);})()">location</a>>
 		</p>
-
-		
-		<p id='url-ctg'>
-			<script type="text/javascript">
-				alert('onload');
-				addOnLoadEvent(function() {insertSaying('url-ctg')};
-			</script>
-		</div>
+	
+		<p>
+			<a href="page3.html" onclick="goNext('page3.html'); return false">...</a>
 		</p>
-
-
+		
 	  </body>
   </html>
 
