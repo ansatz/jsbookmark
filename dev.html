@@ -6,117 +6,32 @@
 				 body { background-color:  #ffddbb ;  color: black; }
 				 a.bml { color : #007700; }
 				 .ctg{ color : #000010; }
-		  </style>
-			  <script type="text/javascript">
-				  function time(){
-					  var start= (new Date);
-					  var day = start.getDay();
-					  var mm = start.getMonth();
-					  var yr = start.getYear()+1900;
-					  	var h = start.getHours();
-						var m = start.getMinutes();
-						var hm = (mm + ' \/ ' + day + ' \/ ' + yr + ' \t     ' + h + ' : ' + m);
-					  return hm;
-				  };
-				  
-				//TODO: add selectText to url
-				//TODO: add to category
-				function writeURL(){
-					//var selectText="abcdefgh";
-					//var data = document.forms[0].selectText.value;
-					var elm = document.createElement("p")
-					elm.className="ctg";	
-					elm.appendChild(document.createTextNode(window.location.href));
-					document.getElementByID('url-ctg').appendChild(pElem);
-				}
-					//location.href = group + "?" + encodeURIComponent(data);
-			function goNext(url) {
+		</style>
+		<script type="text/javascript">
+			function goNext(url,tag) {
 				var loc = window.location.href;
-				location.href = url + "?" + encodeURIComponent(loc);
+				location.href = url + "?" + encodeURIComponent(tag) + "?" + encodeURIComponent(loc);
 			}
-
-
-
-			  </script>
+    	</script>
 	  </head>
-
 	  <body>
-
-		  <p><b>
-			<script type="text/javascript">
-				if(Math.floor(math.random( )>0){ 
-					document.write(time())	
-				}
-			</script>
-		  </b></p>
-	
 		<p>
 			<b><a href="http://localhost:8888/dev2.html">LIST</a></b>
 		</p>
-		  
 		<p>
-		  	<a class="bml" href="javascript:(function(){url = encodeURI(window.location.href);alert(url);})()">location</a>>
+		<a href="http://localhost:8888/dev2.html" onclick="goNext('tag', 'http://localhost:8888/dev2.html'); return false">
+			URL-daily</a>
+		<a class='bml' href="javascript:
 		</p>
-	
-		<p>
-			<a href="page3.html" onclick="goNext('page3.html'); return false">...</a>
-		</p>
-		
 	  </body>
   </html>
 
 
 
+<!--BOOKMARKLETS:
+javascript:(function(){ window.name = 'receiver'; var remoteWin=window.open('','','resizable=yes,width=223,height=337,left=508,top=122'); remoteWin.document.write('<html><body>'); remoteWin.document.write('<script src="http://localhost:8888/lnk.js"><'+'/script>'); })()
+
+javascript:(function(){ window.name = 'receiver'; var remoteWin=window.open('','','resizable=yes,width=223,height=337,left=508,top=122'); remoteWin.document.write('<html><body>'); remoteWin.document.write('<script src="http://localhost:8888/lnk2.js"><'+'/script>'); })()
 
 
-
-
-
-
-
-
-
-
-
-  <!-- <a class onclick="setTimeout('window.close()',0)"  
-		  <a class="bml"
-			  href="javascript:(function(){var x,n,nD,z,i; function aab(a,b){return a?a:b;} function htmlEscape(s){s=s.replace(/&amp;/g,'&amp;amp;');s=s.replace(/&gt;/g,'&amp;gt;');s=s.replace(/&lt;/g,'&amp;lt;');return s;} function attrQuoteEscape(s){s=s.replace(/&amp;/g,'&amp;amp;'); s=s.replace(/&quot;/g, '&amp;quot;');return s;} x=prompt(&quot;show links with this word/phrase in link text or target url (leave blank to list all links):&quot;, &quot;&quot;); n=0; if(x!=null) { x=x.toLowerCase(); nD = window.open().document; nD.writeln('<html><head><title>Links containing &quot;'+htmlEscape(x)+'&quot;</title><base target=&quot;_blank&quot;></head><body>'); nD.writeln('Links on <a href=&quot;'+attrQuoteEscape(location.href)+'&quot;>'+htmlEscape(location.href)+'</a><br> with link text or target url containing &amp;quot;' + htmlEscape(x) + '&amp;quot;<br><hr>'); z = document.links; for (i = 0; i < z.length; ++i) { if ((z[i].innerHTML && z[i].innerHTML.toLowerCase().indexOf(x) != -1) || z[i].href.toLowerCase().indexOf(x) != -1 ) { nD.writeln(++n + '. <a href=&quot;' + attrQuoteEscape(z[i].href) + '&quot;>' + aab(z[i].innerHTML, htmlEscape(z[i].href)) + '</a><br>'); } } nD.writeln('<hr></body></html>'); nD.close(); } })();"
-			  >search links</a>
-
-		  <br>
-
-		  <a class="bml"
-			  href="javascript:(function(){var n_to_open,dl,dll,i; function linkIsSafe(u) { if (u.substr(0,7)=='mailto:') return false; if (u.substr(0,11)=='javascript:') return false; return true; } n_to_open = 0; dl = document.links; dll = dl.length; for(i = 0; i < dll; ++i) { if (linkIsSafe(dl[i].href)) ++n_to_open; } if (!n_to_open) alert ('no links'); else { if (confirm('Open ' + n_to_open + ' links in new windows?')) for (i = 0; i < dll; ++i) if (linkIsSafe(dl[i].href)) window.open(dl[i].href); } })();"
-			  >open all links</a>
-		  <br>
-
-
-		  <a class="bml"
-			  href="javascript:(function(){var n_to_open,dl,dll,i; function linkIsSafe(u) { if (u.substr(0,7)=='mailto:') return false; if (u.substr(0,11)=='javascript:') return false; return true; } n_to_open = 0; dl = document.links; dll = dl.length; if (window.getSelection && window.getSelection().containsNode) { /* mozilla */ for(i=0; i<dll; ++i) { if (window.getSelection().containsNode(dl[i], true) && linkIsSafe(dl[i].href)) ++n_to_open; } if (n_to_open && confirm('Open ' + n_to_open + ' selected links in new windows?')) { for(i=0; i<dll; ++i) if (window.getSelection().containsNode(dl[i], true)) window.open(dl[i].href); } } /* /mozilla */ if (!n_to_open) { /*ie, or mozilla with no links selected: this section matches open_all_links, except for the alert text */ for(i = 0; i < dll; ++i) { if (linkIsSafe(dl[i].href)) ++n_to_open; } if (!n_to_open) alert ('no links'); else { if (confirm('No links selected.  Open ' + n_to_open + ' links in new windows?')) for (i = 0; i < dll; ++i) if (linkIsSafe(dl[i].href)) window.open(dl[i].href); } } })();"
-			  >open selected links</a>
-		  <br>
-
-
-		  <a class="bml"
-			  href="javascript:(function(){var x,z,i; function linkIsSafe(u) { if (u.substr(0,7)=='mailto:') return false; if (u.substr(0,11)=='javascript:') return false; return true; } function linkIsImage(u) { var spd, ext; spd=u.split('.'); if (spd.length > 0) { ext = spd[spd.length-1].toLowerCase(); if (ext=='gif' || ext=='jpg' || ext=='jpeg' || ext=='png' || ext=='mng') return true; } return false; } function htmlEscape(s){s=s.replace(/&amp;/g,'&amp;amp;');s=s.replace(/&gt;/g,'&amp;gt;');s=s.replace(/&lt;/g,'&amp;lt;');return s;} z = window.open().document; z.writeln('<p>Images linked to by ' + htmlEscape(location.href) + ':</p><hr>'); x = document.links; for (i = 0; i < x.length; ++i) if(linkIsSafe(x[i].href) && linkIsImage(x[i].href)) z.writeln('<p>' + x[i].innerHTML + ' (' + htmlEscape(x[i].href) + ')<br><img src=&quot;' + x[i].href.replace(/&quot;/g, '&amp;quot;') + '&quot;></p>'); z.writeln('<hr>'); z.close(); })();"
-			  >linked images</a>
-		  <br>
-
-
-		  <a class="bml"
-			  href="javascript:(function(){var dims,dimarray,wid,hei,dimstring,x,i,z,url; function linkIsSafe(u) { if (u.substr(0,7)=='mailto:') return false; if (u.substr(0,11)=='javascript:') return false; return true; } function htmlEscape(s){s=s.replace(/&amp;/g,'&amp;amp;');s=s.replace(/&gt;/g,'&amp;gt;');s=s.replace(/&lt;/g,'&amp;lt;');return s;} dims = prompt('width, height for each frame', '760, 500'); if (dims!=null) { dimarray = dims.split(','); wid = parseInt(dimarray[0]); hei = parseInt(dimarray[1]); dimstring = 'width='+wid+' height='+hei; x = document.links; z = window.open().document; for (i = 0; i < x.length; ++i) { url = x[i].href; if(linkIsSafe(url)) { z.writeln('<p>' + x[i].innerHTML + ' (' + htmlEscape(url) + ')<br><iframe ' + dimstring + ' src=&quot;' + url.replace(/&quot;/g, '&amp;quot;') + '&quot;>[broken iframe]</iframe></p>'); } } z.close(); } })();"
-			  >linked pages</a>
-		  <br>
-
-
-		  <a class="bml"
-			  href="javascript:(function(){var f,x,i; f=prompt('Target links to:\n\n_blank: new windows\n_self: this window\nfoo: a single new window called &quot;foo&quot;','_blank'); if(f!=null) { x=document.links; for(i=0;i<x.length;++i) { x[i].target=f; } } })();"
-			  >retarget links</a>
-		  <br>
-
-
-		  <a class="bml"
-			  href='javascript:(function(){var x,i; x = document.forms; for (i = 0; i < x.length; ++i) x[i].method="get"; alert("Changed " + x.length + " forms to use the GET method.  After submitting a form from this page, you should be able to bookmark the result."); })();'>frmget</a>  
-		  
-
-  -->
+-->

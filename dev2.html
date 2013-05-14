@@ -1,23 +1,28 @@
 <html>
 	<head>
+		<title>url-links</title>
 		<script type="text/javascript">
-			function readData(eid){
-				//var urlStr = decodeURI(location.search.substring(0, location.search.length));
-				var urlStr = window.location.href;
-				alert('urlstr'+urlStr);
-				var ee = document.createElement("p");
-				ee.appendChild(document.createTextNode(urlStr);
-				document.getElementById(eid).appendChild(ee);
-				
-				//if(urlStr > 0) {
-				//	document.write(urlStr);
-				//	document.close();
-				//document.forms[0].url.value=location.href
-				//document.forms[1].selectText.value=location.href
-			//}
-		}	
+			function readData() {
+				var urlLnk = decodeURIComponent(location.search.substring(1, location.search.
+							length));
+				console.log('urlLnk',urlLnk);
+				//if (urlLnk.length > 0) {
+					var pElem = document.createElement("p");
+					pElem.appendChild( document.createTextNode(urlLnk) );
+					document.body.appendChild(pElem);
+					//}
+				return urlLnk;
+			}
 
 		</script>
 	</head>
-	<body onload="readData()"></body>
+	<body>
+		<script type="text/javascript">
+			url=readData();
+			alert('url' + url);
+		</script>
+	
+	</body>
+
 </html>
+
