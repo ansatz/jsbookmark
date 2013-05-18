@@ -1,30 +1,32 @@
 <html>
-	<head>
-		<title>Remote: Page Link bookmarklets</title>
-		<base target="receiver">
-		<style type="text/css">
-				 body { background-color:  #ffddbb ;  color: black; }
-				 a.bml { color : #007700; }
-				 .ctg{ color : #000010; }
-		</style>
-		<script type="text/javascript">
-			function goNext(url,tag) {
-				var loc = window.location.href;
-				location.href = url + "?" + encodeURIComponent(tag) + "?" + encodeURIComponent(loc);
-			}
-    	</script>
-	  </head>
-	  <body>
-		<p>
-			<b><a href="http://localhost:8888/dev2.html">LIST</a></b>
-		</p>
-		<p>
-		<a href="http://localhost:8888/dev2.html" onclick="goNext('tag', 'http://localhost:8888/dev2.html'); return false">
-			URL-daily</a>
-		<a class='bml' href="javascript:
-		</p>
-	  </body>
-  </html>
+  <head>
+	<title>Remote: Page Link bookmarklets</title>
+	<base target="receiver">
+	<style type="text/css">
+	  body { background-color:  #ffddbb ;  color: black; }
+	  a.bml { color : #007700; }
+	  .ctg{ color : #000010; }
+	</style type="text/css" media="screen">
+
+
+	<script type="text/javascript">
+	  function goNext(url) {
+	  loc = window.location.href;
+      data = document.forms[0].selectText.value;
+      s = url + "?"+loc
+	  window.location.href = url + encodeURIComponent(loc);
+	  }
+    </script>
+  </head>
+  <body>
+
+    <p>
+	  <b><a href="http://localhost:8888/dev2.html">LIST</a></b>
+	  <b><a class="bml" href="javascript:(function(){url = encodeURI(window.location.href);alert(url);})()">url</a></b>
+	  <b><a class="bml" href="http://localhost:8888/ctg/daily.html" onclick="goNext("http://localhost:8888/ctg/daily.html?url="); return false;">URL-daily</a></b>
+    </p>
+  </body>>
+</html>
 
 
 
